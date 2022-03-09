@@ -34,17 +34,15 @@ int calculate(int n, int r)
   result=sum0/(sum1 * sum2);
   return result;
 }
-
 void output(int n, int r, int result)
 {
-  printf("the value of given combination of n=%d and r=%d is %d\n ",n,r,result);
-  
+  printf("the value of given combination of n=%d and r=%d is %d\n ",n,r,result); 
 }
 int main()
-{int a,y,res;
+{
+  int a,y,res;
 input_n_and_r(&a,&y);
  res = calculate(a,y);
   output(a,y,res);
   return 0;
-  
 }

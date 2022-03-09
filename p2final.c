@@ -13,7 +13,7 @@ Fraction input_fraction()
   return k;
 }
 
-Fraction Largest_fraction(Fraction f1,Fraction f2, Fraction f3)
+Fraction smallest_fraction(Fraction f1,Fraction f2, Fraction f3)
 {
   Fraction s;
   if((f1.num/f1.den < f2.num/f2.den) && (f1.num/f1.den < f3.num/f3.den))
@@ -21,7 +21,8 @@ Fraction Largest_fraction(Fraction f1,Fraction f2, Fraction f3)
     s.num=f1.num;
     s.den=f1.den;
   }
-  else if(f2.num/f2.den < f3.num/f3.den)
+  else 
+    if((f2.num/f2.den) < (f3.num/f3.den))
   {
     s.num=f2.num;
     s.den=f2.den;
@@ -31,21 +32,20 @@ Fraction Largest_fraction(Fraction f1,Fraction f2, Fraction f3)
     s.num=f3.num;
     s.den=f3.den;
   }
-  return s;
-     
+  return s;  
 }
 
-void output(Fraction l)
+void output(Fraction f1,Fraction f2,Fraction f3,Fraction l)
 {
-  printf("Smallest fraction is %d/%d\n",l.num,l.den);
+  printf("Smallest fraction among %d/%d ,%d/%d and %d/%d is %d/%d\n",f1.num,f1.den,f2.num,f2.den,f3.num,f3.den,l.num,l.den);
 }
 int main()
 {
-  Fraction a,b,c,l;
+  Fraction a,b,c,s;
   a=input_fraction();
   b=input_fraction();
   c=input_fraction();
-  l=Largest_fraction(a,b,c);
-  output(l);
+  s=smallest_fraction(a,b,c);
+  output(a,b,c,s);
   return 0;
 }
