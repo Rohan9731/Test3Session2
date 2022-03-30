@@ -2,14 +2,14 @@
 
 typedef struct _fraction
 {
-int num,den;
+float num,den;
 }Fraction;
 
 Fraction input_fraction()
 {
   Fraction k;
   printf("Enter the numerator and denominator\n");
-  scanf("%d%d",&k.num,&k.den);
+  scanf("%f%f",&k.num,&k.den);
   return k;
 }
 
@@ -37,7 +37,7 @@ Fraction smallest_fraction(Fraction f1,Fraction f2, Fraction f3)
 
 void output(Fraction f1,Fraction f2,Fraction f3,Fraction l)
 {
-  printf("Smallest fraction among %d/%d ,%d/%d and %d/%d is %d/%d\n",f1.num,f1.den,f2.num,f2.den,f3.num,f3.den,l.num,l.den);
+  printf("Smallest fraction among %.1f/%.1f ,%.1f/%.1f and %.1f/%.1f is %.1f/%.1f\n",f1.num,f1.den,f2.num,f2.den,f3.num,f3.den,l.num,l.den);
 }
 int main()
 {

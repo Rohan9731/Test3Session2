@@ -20,14 +20,14 @@ int add(int num1,int den1, int num2, int den2, int *num3, int *den3)
    *den3=den1*den2;
    *num3=num1*den2+num2*den1;
     }
-    if(den1!=den2)
+    //if(den1!=den2)
      {
-      if(den1>den2)
-          n=den2;
+      if(*den3 < *num3)
+          n=*den3;
           else
-          n=den1;
+          n=*num3;
      
-         for(i=2;i<=n;i++)
+         for(i=n;i>0;i--)
         {
          if(*num3%i==0 && *den3%i==0)
           {
@@ -37,13 +37,13 @@ int add(int num1,int den1, int num2, int den2, int *num3, int *den3)
         }
        }
     
-  }
-  if(*den3==*num3)
-  { 
-  *den3=1;
-  *num3=1;
-  }
-}
+  }}
+  //if(*den3==*num3)
+  //{ 
+  //*den3=1;
+  // *num3=1;
+  // }
+// }
 
 void output(int num1, int den1, int num2, int den2, int num3, int den3 )
 {
