@@ -15,19 +15,17 @@ int calculate(int n, int r)
  
   for(i=n;i>0;i--)
     {
-     //int sum0=1;
       sum0=sum0 * i;
     }
-  //return sum0;
+  
   int x= n-r;
   for(i=x;i>0;i--)
     {
-      //int sum1=1;
+
       sum1= sum1 * i;
     }
   for (i=r;i>0;i--)
     {
-      //int sum2=1;
       sum2= sum2 * i;
     }
 
@@ -39,6 +37,7 @@ void output(int n, int r, int result)
   printf("the value of given combination of n=%d and r=%d is %d\n ",n,r,result); 
 }
 int main()
+
 {
   int a,y,res;
 input_n_and_r(&a,&y);

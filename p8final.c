@@ -1,4 +1,4 @@
-> /*8. Write program to add n fractions
+/*<br> 8. Write program to add n fractions
 	<br> struct _fraction 
 	<br> {
 	<br>    int num,den;
@@ -10,53 +10,82 @@
 	<br> Fraction add_fractions(Fraction f1, Fraction f2);
 	<br> Fraction add_n_fractions(int n,Fraction f[n]);
 	<br> void output(int n, Fraction f[n], Fraction sum);*/
-    
-    #include<stdio.h>
-struct _fraction
+#include <stdio.h>
+struct fractions
 {
-int num,den;
+    int num, den;
 };
-typedef struct _fraction fraction;
+typedef struct fractions frac;
+int gcd(int a, int b)
+{
+    int n, i;
+    if (a < b)
+        n = a;
+    else
+        n = b;
+    for (i = n; i > 0; i--)
+        if (a % i == 0 && b % i == 0)
+            return i;
+}
+int input_size()
+{
+  int n;
+  printf("enter the size of array\n");
+  scanf("%d",&n);
+  return n;
+}
+frac input_fractions()
+{
+    frac x;
+    printf("enter the num and den of fractions\n");
+    scanf("%d%d", &x.num, &x.den);
+    return x;
+}
+void input_n_fractions(int n,frac f[n])
+{
+for(int i=0;i<n;i++)
 
-  int gcd(int a,int b)
-  {
-    int t;
-    while (b!=0)
-      {
-        t = b;
-        b = a%b;
-        a = t;
-      }
-    return a;
-  }
-fraction input_fraction()
-{
-    fraction k;
-  printf("Enter the numerator and denominator\n");
-  scanf("%d%d",&k.num,&k.den);
-  return k;
+  f[i]=input_fractions();
+
 }
-fraction add_fraction(fraction a,fraction b)
+frac add_fractions(frac a, frac b)
 {
-  fraction sum;
-  sum.num=a.num*b.den + b.num*a.den;
-  sum.den= a.den*b.den;
-  int g=gcd(sum.num,sum.den);
-  sum.num=sum.num/g;
-  sum.den= sum.den/g;
-  return sum;
+    frac sum;
+    sum.den = a.den * b.den;
+    sum.num = a.num * b.den + b.num * a.den;
+    return sum;
+
 }
-void output(fraction a,fraction b,fraction sum)
+frac add_n_fractions(int n,frac f[n])
 {
-  printf ("the sum of two fractions %d/%d and %d/%d is %d/%d\n",a.num,a.den,b.num,b.den,sum.num,sum.den);
+  int i;
+  frac temp;
+  temp.num=0;
+temp.den=1;
+for( i=0;i<n;i++)
+  temp=add_fractions(temp,f[i]);
+return temp;
+}
+void output(int n , frac a[n] , frac add)
+{
+printf("the sum of given %d fractions:\n",n);
+for(int i=0;i<n-1;i++){
+printf("%d/%d + ",a[i].num,a[i].den);}
+printf("%d/%d is %d/%d",a[n-1].num,a[n-1].den, add.num,add.den);
 }
 
 int main()
 {
-  fraction a,b,c;
-  a=input_fraction();
-  b=input_fraction();
-  c=add_fraction(a,b);
-  output(a,b,c);
-  return 0;
-  }
+   int n,hcf;
+   frac sum,result;
+   n=input_size();
+frac a[n];
+input_n_fractions(n,a);
+result=add_n_fractions(n,a);
+hcf= gcd(result.num,result.den) ;
+sum.num=result.num/hcf;
+sum.den=result.den/hcf;
+output(n,a,sum);
+return 0;
+}
+
